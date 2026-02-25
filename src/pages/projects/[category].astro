@@ -5,7 +5,6 @@ import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
   return [
-    { params: { category: 'recent' }, props: { title: 'Recent' } },
     { params: { category: 'data-science-ml' }, props: { title: 'Data Science & Machine Learning' } },
     { params: { category: 'statistical-research' }, props: { title: 'Statistical Analysis & Research' } },
     { params: { category: 'software-tools' }, props: { title: 'Software & Developer Tools' } },
@@ -37,22 +36,42 @@ function enrichProject(project: (typeof allProjects)[number]) {
   };
 }
 
-let filtered;
-if (category === 'recent') {
-  filtered = allProjects
-    .filter((p) => p.data.repoName === 'claude-mcp-extension')
-    .map(enrichProject);
-} else {
-  filtered = allProjects
-    .filter((p) => p.data.category === category)
-    .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
-    .map(enrichProject);
-}
+const filtered = allProjects
+  .filter((p) => p.data.category === category)
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
+  .map(enrichProject);
+
+const filterLinks = [
+  { href: '/projects', label: 'All' },
+  { href: '/projects/data-science-ml', label: 'DS & ML' },
+  { href: '/projects/statistical-research', label: 'Stats' },
+  { href: '/projects/software-tools', label: 'Software' },
+];
+
+const currentHref = `/projects/${category}`;
 ---
 
 <BaseLayout title={`${title} — Ben Laufer`}>
   <div>
-    <h1 class="text-3xl font-bold text-white mb-8">{title}</h1>
+    <h1 class="text-3xl font-bold text-white mb-6">{title}</h1>
+
+    <!-- Category filter links -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      {filterLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+            link.href === currentHref
+              ? 'bg-accent-blue text-white'
+              : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {filtered.map((project) => (
         <ProjectCard {...project} />

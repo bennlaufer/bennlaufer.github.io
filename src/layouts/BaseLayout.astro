@@ -1,7 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Navbar from '../components/Navbar.astro';
-import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
   title: string;
@@ -39,59 +39,10 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
   </head>
   <body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
-    <Navbar />
-
-    <div class="pt-16 lg:grid lg:grid-cols-[280px_1fr] min-h-screen">
-      <Sidebar currentPath={currentPath} transition:persist transition:name="sidebar" />
-
-      <!-- Mobile backdrop -->
-      <div
-        id="sidebar-backdrop"
-        class="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm hidden lg:hidden"
-      />
-
-      <main class="min-h-screen p-6 lg:p-10">
-        <slot />
-      </main>
-    </div>
-
-    <script>
-      function initSidebar() {
-        const toggle = document.getElementById('sidebar-toggle');
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-
-        function openSidebar() {
-          sidebar?.classList.remove('-translate-x-full');
-          backdrop?.classList.remove('hidden');
-        }
-
-        function closeSidebar() {
-          sidebar?.classList.add('-translate-x-full');
-          backdrop?.classList.add('hidden');
-        }
-
-        toggle?.addEventListener('click', () => {
-          const isOpen = !sidebar?.classList.contains('-translate-x-full');
-          if (isOpen) {
-            closeSidebar();
-          } else {
-            openSidebar();
-          }
-        });
-
-        backdrop?.addEventListener('click', closeSidebar);
-      }
-
-      document.addEventListener('astro:page-load', initSidebar);
-
-      // Close mobile sidebar before page transition
-      document.addEventListener('astro:before-preparation', () => {
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        sidebar?.classList.add('-translate-x-full');
-        backdrop?.classList.add('hidden');
-      });
-    </script>
+    <Navbar currentPath={currentPath} />
+    <main class="pt-20 max-w-5xl mx-auto px-6 lg:px-10 min-h-screen">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

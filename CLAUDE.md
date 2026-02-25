@@ -35,22 +35,23 @@ You have access to Playwright MCP tools for visual feedback while building. Use 
 ```
 src/
 ├── components/
-│   ├── Navbar.astro            # Top navigation bar — site title + social/contact icon links
-│   ├── Sidebar.astro           # Left sidebar — category navigation links
-│   ├── ProjectCard.astro       # Glassmorphism card — title, desc, tags, GitHub stats
-│   └── CategorySection.astro   # Category heading + responsive grid of ProjectCards
+│   ├── Navbar.astro            # Top navigation bar — site title + 5 page links (desktop) / hamburger menu (mobile)
+│   ├── Footer.astro            # Site-wide footer — social links (Email, LinkedIn, GitHub) + copyright
+│   └── ProjectCard.astro       # Glassmorphism card — title, desc, tags, GitHub stats
 ├── content/
 │   └── project-overrides/      # Required empty dir for github-repos-astro-loader
 ├── data/
 │   └── projects.json           # 8 projects — source of truth for project metadata
 ├── layouts/
-│   └── BaseLayout.astro        # Shared layout — Navbar + Sidebar + main slot, View Transitions, SEO meta
+│   └── BaseLayout.astro        # Shared layout — Navbar + centered main + Footer, View Transitions, SEO meta
 ├── pages/
-│   ├── index.astro             # About — bio, education, skills & interests
+│   ├── index.astro             # Home — landing page with hero, featured projects, skills
+│   ├── about.astro             # About — bio, education, skills & interests
+│   ├── contact.astro           # Contact — email, LinkedIn, GitHub cards
 │   ├── resume.astro            # Resume — PDF iframe (desktop) / download (mobile)
 │   └── projects/
-│       ├── index.astro         # Projects index (redirects or lists all)
-│       └── [category].astro    # Dynamic route — projects filtered by category
+│       ├── index.astro         # Projects index — all projects grouped by category with filter links
+│       └── [category].astro    # Dynamic route — projects filtered by category with filter links
 ├── content.config.ts           # Two collections: githubRepos (API) + projects (JSON)
 └── env.d.ts                    # Astro client types
 ```
@@ -68,7 +69,7 @@ GitHub API ──→ githubRepos collection ──┘
 ## Design System
 
 - **Theme**: Dark only — `slate-900`/`950` backgrounds, white/gray text
-- **Accent**: Blue `#3b82f6` → Purple `#8b5cf6` gradient (used in hover borders, active sidebar links, CTAs)
+- **Accent**: Blue `#3b82f6` → Purple `#8b5cf6` gradient (used in hover borders, active nav links, CTAs)
 - **Cards**: Glassmorphism (`bg-white/5 backdrop-blur-sm`) with hover scale + glow
 - **Animations**: `fade-in`, `fade-in-up`, `slide-in` with staggered delays (defined in tailwind.config.mjs)
 - **Responsive**: Mobile-first. 1 col → 2 cols (md) → 3 cols (lg) grid
@@ -76,8 +77,8 @@ GitHub API ──→ githubRepos collection ──┘
 ## Key Conventions
 
 - Tailwind `darkMode: 'class'` — `<html>` always has `class="dark"`
-- Sidebar layout: fixed left sidebar (desktop) / slide-out drawer (mobile) with category navigation
-- Mobile sidebar toggle uses vanilla JS, re-initialized on `astro:page-load` for View Transitions
+- Top navbar layout: fixed top navbar with 5 page links (Home, Resume, Projects, About, Contact)
+- Mobile hamburger menu uses vanilla JS, re-initialized on `astro:page-load` for View Transitions
 - No client-side framework (React, Vue, etc.) — all components are Astro (server-rendered)
 - SEO meta (canonical, OG, Twitter) set in BaseLayout via `Astro.url`
 - All pages use `<BaseLayout title="...">` wrapper

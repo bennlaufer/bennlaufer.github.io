@@ -1,3 +1,82 @@
 ---
-return Astro.redirect('/projects/recent');
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const githubRepos = await getCollection('githubRepos');
+
+const repoMap = new Map<string, (typeof githubRepos)[number]>();
+for (const repo of githubRepos) {
+  repoMap.set(repo.data.name, repo);
+}
+
+function enrichProject(project: (typeof allProjects)[number]) {
+  const gh = repoMap.get(project.data.repoName);
+  return {
+    title: project.data.title,
+    description: project.data.description,
+    category: project.data.category,
+    tags: project.data.tags,
+    repoUrl: gh?.data.url ?? `https://github.com/bennlaufer/${project.data.repoName}`,
+    stars: gh?.data.stars,
+    forks: gh?.data.raw?.forks_count,
+    language: gh?.data.raw?.language ?? undefined,
+  };
+}
+
+const categories = [
+  { slug: 'data-science-ml', title: 'Data Science & Machine Learning' },
+  { slug: 'statistical-research', title: 'Statistical Analysis & Research' },
+  { slug: 'software-tools', title: 'Software & Developer Tools' },
+];
+
+const filterLinks = [
+  { href: '/projects', label: 'All' },
+  { href: '/projects/data-science-ml', label: 'DS & ML' },
+  { href: '/projects/statistical-research', label: 'Stats' },
+  { href: '/projects/software-tools', label: 'Software' },
+];
 ---
+
+<BaseLayout title="Projects — Ben Laufer">
+  <div>
+    <h1 class="text-3xl font-bold text-white mb-6">Projects</h1>
+
+    <!-- Category filter links -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      {filterLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+            link.href === '/projects'
+              ? 'bg-accent-blue text-white'
+              : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Projects grouped by category -->
+    {categories.map((cat) => {
+      const projects = allProjects
+        .filter((p) => p.data.category === cat.slug)
+        .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
+        .map(enrichProject);
+
+      return (
+        <section class="mb-16">
+          <h2 class="text-2xl font-bold text-white mb-6">{cat.title}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <ProjectCard {...project} />
+            ))}
+          </div>
+        </section>
+      );
+    })}
+  </div>
+</BaseLayout>
