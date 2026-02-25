@@ -1,0 +1,90 @@
+[
+  {
+    "id": "text-summarization-bart",
+    "slug": "text-summarization-bart",
+    "repoName": "Text-Summarization-BART",
+    "title": "Text Summarization with BART",
+    "description": "Abstractive text summarization of dialogues using fine-tuned BART (140M params) with Keras 3 and KerasHub",
+    "category": "data-science-ml",
+    "featured": true,
+    "displayOrder": 1,
+    "tags": ["Python", "NLP", "Deep Learning", "Keras"]
+  },
+  {
+    "id": "ner-transformers",
+    "slug": "ner-transformers",
+    "repoName": "NER-Transformers",
+    "title": "Named Entity Recognition with Transformers",
+    "description": "Custom transformer NER model from scratch — PER, ORG, LOC, MISC entity recognition on CoNLL 2003 with multi-head self-attention",
+    "category": "data-science-ml",
+    "featured": true,
+    "displayOrder": 2,
+    "tags": ["Python", "NLP", "Transformers", "PyTorch"]
+  },
+  {
+    "id": "metric-learning-image-search",
+    "slug": "metric-learning-image-search",
+    "repoName": "Metric-Learning-Image-Search",
+    "title": "Metric Learning Image Search",
+    "description": "CNN metric learning for image similarity search using contrastive loss on CIFAR-100 with 8-dimensional normalized embeddings",
+    "category": "data-science-ml",
+    "featured": true,
+    "displayOrder": 3,
+    "tags": ["Python", "Computer Vision", "Deep Learning", "PyTorch"]
+  },
+  {
+    "id": "sentiment-algorithm",
+    "slug": "sentiment-algorithm",
+    "repoName": "Sentiment-Algorithm",
+    "title": "Sentiment Analysis Algorithm",
+    "description": "Interactive R package for real-time sentiment analysis using AFINN lexicon with auto spelling correction and iterative scoring",
+    "category": "data-science-ml",
+    "featured": false,
+    "displayOrder": 4,
+    "tags": ["R", "NLP", "Package Development"]
+  },
+  {
+    "id": "body-composition-and-anthropometric-analysis",
+    "slug": "body-composition-and-anthropometric-analysis",
+    "repoName": "Body-Composition-and-Anthropometric-Analysis",
+    "title": "Body Composition & Anthropometric Analysis",
+    "description": "Linear mixed-effects models and PCA analyzing health differences across Greek minority schools in Istanbul",
+    "category": "statistical-research",
+    "featured": false,
+    "displayOrder": 5,
+    "tags": ["R", "Mixed-Effects Models", "PCA", "Biostatistics"]
+  },
+  {
+    "id": "sars-cov-2-seroprevalence-analysis",
+    "slug": "sars-cov-2-seroprevalence-analysis",
+    "repoName": "SARS-CoV-2-Seroprevalence-Analysis",
+    "title": "SARS-CoV-2 Seroprevalence Analysis",
+    "description": "CDC-affiliated logistic regression on 33K+ blood donors analyzing SARS-CoV-2 seroconversion detection behavior",
+    "category": "statistical-research",
+    "featured": false,
+    "displayOrder": 6,
+    "tags": ["SAS", "Logistic Regression", "Epidemiology"]
+  },
+  {
+    "id": "tidyworldcupr",
+    "slug": "tidyworldcupr",
+    "repoName": "tidyWorldCupR",
+    "title": "tidyWorldCupR",
+    "description": "R package for FIFA World Cup data (1930-2014) with Leaflet maps, goal scorers, match info, and emoji flags",
+    "category": "statistical-research",
+    "featured": false,
+    "displayOrder": 7,
+    "tags": ["R", "Data Visualization", "Package Development"]
+  },
+  {
+    "id": "claude-mcp-extension",
+    "slug": "claude-mcp-extension",
+    "repoName": "claude-mcp-extension",
+    "title": "Claude MCP Extension",
+    "description": "VS Code extension for managing MCP servers in Claude Code — health checks, enable/disable, plugin discovery",
+    "category": "software-tools",
+    "featured": false,
+    "displayOrder": 8,
+    "tags": ["TypeScript", "VS Code", "AI Tools"]
+  }
+]
