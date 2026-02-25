@@ -37,6 +37,7 @@ src/
 ├── components/
 │   ├── Navbar.astro            # Top navigation bar — site title + 5 page links (desktop) / hamburger menu (mobile)
 │   ├── Footer.astro            # Site-wide footer — social links (Email, LinkedIn, GitHub) + copyright
+│   ├── ExperienceTimeline.astro # Vertical timeline — 4 work experience entries with line, dots, date badges
 │   └── ProjectCard.astro       # Glassmorphism card — title, desc, tags, GitHub stats
 ├── content/
 │   └── project-overrides/      # Required empty dir for github-repos-astro-loader
@@ -45,7 +46,7 @@ src/
 ├── layouts/
 │   └── BaseLayout.astro        # Shared layout — Navbar + centered main + Footer, View Transitions, SEO meta
 ├── pages/
-│   ├── index.astro             # Home — landing page with hero, featured projects, skills
+│   ├── index.astro             # Home — landing page with hero, experience timeline, featured projects, skills
 │   ├── about.astro             # About — bio, education, skills & interests
 │   ├── contact.astro           # Contact — email, LinkedIn, GitHub cards
 │   ├── resume.astro            # Resume — PDF iframe (desktop) / download (mobile)

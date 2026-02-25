@@ -12,16 +12,21 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ## 3. Core Pages
 
-### 3.1 Home / About (`/`)
+### 3.1 Home (`/`)
 
-- **About section**: Short professional bio
-- **Education**: Degree and institution
+- **Hero**: Name, tagline, short bio, CTA buttons (View Resume, GitHub)
+- **Experience Timeline**: Vertical timeline with 4 work experience entries (company initials, role, dates, description)
+- **Featured Projects**: Top 3 projects displayed as cards with "View All Projects" link
 - **Skills & Interests**: Tag cloud of technologies and domains
 
-### 3.2 Projects (`/projects/[category]`)
+### 3.2 About (`/about`)
 
-- Projects browsed via sidebar category navigation:
-  - **Recent** (`/projects/recent`)
+- Professional bio, education, skills & interests
+
+### 3.3 Projects (`/projects/[category]`)
+
+- Projects browsed via category filter links:
+  - **All** (`/projects`)
   - **Data Science & ML** (`/projects/data-science-ml`)
   - **Statistical Research** (`/projects/statistical-research`)
   - **Software & Dev Tools** (`/projects/software-tools`)
@@ -29,7 +34,11 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 - Cards link to the GitHub repository
 - Projects sorted by `displayOrder` within each category
 
-### 3.3 Resume (`/resume`)
+### 3.4 Contact (`/contact`)
+
+- Contact cards linking to email, LinkedIn, and GitHub
+
+### 3.5 Resume (`/resume`)
 
 - Embedded PDF viewer (iframe) on desktop/tablet
 - Fallback message + download button on mobile
@@ -66,21 +75,22 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ### 5.2 Layout
 
-- **Navbar**: Fixed top bar with site title (left) and social/contact icon links (right)
-- **Sidebar**: Fixed left panel (desktop) / slide-out drawer (mobile) with category navigation links
-- **Main content**: Scrollable content area to the right of the sidebar
+- **Navbar**: Fixed top bar with site title (left) and 5 page links (right, desktop) / hamburger menu (mobile)
+- **Main content**: Centered content area (`max-w-5xl`) below the navbar
+- **Footer**: Social links (Email, LinkedIn, GitHub) + copyright
 
 ### 5.3 Interactions
 
 - Card hover: subtle scale (1.02) + accent border glow + shadow
-- Page entrance animations: staggered fade-in-up (0.1s, 0.2s, 0.3s delays)
+- Page entrance animations: staggered fade-in-up with incremental delays
 - View Transitions: smooth cross-page navigation via Astro View Transitions API
-- Mobile: sidebar toggle button to open/close navigation drawer
+- Mobile: hamburger menu toggle for navigation
 
 ### 5.4 Responsive Breakpoints
 
-- **Mobile** (<1024px): Sidebar hidden by default (toggle to slide in), no PDF iframe
-- **Desktop** (1024px+): Sidebar always visible, PDF iframe on resume page
+- **Mobile** (<640px): Single column, hamburger nav, no PDF iframe, timeline stacked vertically
+- **Tablet** (640px–1023px): Two-column grids, inline nav links
+- **Desktop** (1024px+): Three-column project grids, PDF iframe on resume page
 
 ## 6. Technical Requirements
 
