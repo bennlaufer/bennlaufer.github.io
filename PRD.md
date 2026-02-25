@@ -12,18 +12,19 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ## 3. Core Pages
 
-### 3.1 Home (`/`)
+### 3.1 Home / About (`/`)
 
-- **Hero section**: Name, tagline ("Data Science | AI Agent Development"), short bio, social links (GitHub, LinkedIn, email)
-- **Featured projects**: 3 highlighted projects displayed as interactive cards with live GitHub stats
-- **Contact section**: Email, GitHub, and LinkedIn buttons
+- **About section**: Short professional bio
+- **Education**: Degree and institution
+- **Skills & Interests**: Tag cloud of technologies and domains
 
-### 3.2 Projects (`/projects`)
+### 3.2 Projects (`/projects/[category]`)
 
-- All 8 projects displayed in 3 categorized sections:
-  - **Data Science & Machine Learning** (4 projects)
-  - **Statistical Analysis & Research** (3 projects)
-  - **Software & Developer Tools** (1 project)
+- Projects browsed via sidebar category navigation:
+  - **Recent** (`/projects/recent`)
+  - **Data Science & ML** (`/projects/data-science-ml`)
+  - **Statistical Research** (`/projects/statistical-research`)
+  - **Software & Dev Tools** (`/projects/software-tools`)
 - Each project card shows: title, description, tags, GitHub stars/forks/language
 - Cards link to the GitHub repository
 - Projects sorted by `displayOrder` within each category
@@ -63,18 +64,23 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 - **Typography**: System font stack, white primary text, gray secondary
 - **Cards**: Glassmorphism effect (semi-transparent white background + backdrop blur)
 
-### 5.2 Interactions
+### 5.2 Layout
+
+- **Navbar**: Fixed top bar with site title (left) and social/contact icon links (right)
+- **Sidebar**: Fixed left panel (desktop) / slide-out drawer (mobile) with category navigation links
+- **Main content**: Scrollable content area to the right of the sidebar
+
+### 5.3 Interactions
 
 - Card hover: subtle scale (1.02) + accent border glow + shadow
 - Page entrance animations: staggered fade-in-up (0.1s, 0.2s, 0.3s delays)
 - View Transitions: smooth cross-page navigation via Astro View Transitions API
-- Mobile: hamburger menu toggle
+- Mobile: sidebar toggle button to open/close navigation drawer
 
-### 5.3 Responsive Breakpoints
+### 5.4 Responsive Breakpoints
 
-- **Mobile** (<640px): Single column, hamburger nav, no PDF iframe
-- **Tablet** (640-1023px): 2-column project grid
-- **Desktop** (1024px+): 3-column project grid, full nav, PDF iframe
+- **Mobile** (<1024px): Sidebar hidden by default (toggle to slide in), no PDF iframe
+- **Desktop** (1024px+): Sidebar always visible, PDF iframe on resume page
 
 ## 6. Technical Requirements
 

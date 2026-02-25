@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [
+    { params: { category: 'recent' }, props: { title: 'Recent' } },
+    { params: { category: 'data-science-ml' }, props: { title: 'Data Science & Machine Learning' } },
+    { params: { category: 'statistical-research' }, props: { title: 'Statistical Analysis & Research' } },
+    { params: { category: 'software-tools' }, props: { title: 'Software & Developer Tools' } },
+  ];
+}
+
+const { category } = Astro.params;
+const { title } = Astro.props;
+
+const allProjects = await getCollection('projects');
+const githubRepos = await getCollection('githubRepos');
+
+const repoMap = new Map<string, (typeof githubRepos)[number]>();
+for (const repo of githubRepos) {
+  repoMap.set(repo.data.name, repo);
+}
+
+function enrichProject(project: (typeof allProjects)[number]) {
+  const gh = repoMap.get(project.data.repoName);
+  return {
+    title: project.data.title,
+    description: project.data.description,
+    category: project.data.category,
+    tags: project.data.tags,
+    repoUrl: gh?.data.url ?? `https://github.com/bennlaufer/${project.data.repoName}`,
+    stars: gh?.data.stars,
+    forks: gh?.data.raw?.forks_count,
+    language: gh?.data.raw?.language ?? undefined,
+  };
+}
+
+let filtered;
+if (category === 'recent') {
+  filtered = allProjects
+    .filter((p) => p.data.repoName === 'claude-mcp-extension')
+    .map(enrichProject);
+} else {
+  filtered = allProjects
+    .filter((p) => p.data.category === category)
+    .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
+    .map(enrichProject);
+}
+---
+
+<BaseLayout title={`${title} — Ben Laufer`}>
+  <div>
+    <h1 class="text-3xl font-bold text-white mb-8">{title}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {filtered.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

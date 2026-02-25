@@ -1,5 +1,7 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
+import Navbar from '../components/Navbar.astro';
+import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
   title: string;
@@ -9,13 +11,6 @@ interface Props {
 const { title, description = 'Ben Laufer — Data Science & AI Agent Development' } = Astro.props;
 const currentPath = Astro.url.pathname;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/resume', label: 'Resume' },
-  { href: '/#contact', label: 'Contact' },
-];
 ---
 
 <!doctype html>
@@ -41,91 +36,61 @@ const navLinks = [
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white flex flex-col">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50" transition:persist>
-      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
-          Ben Laufer
-        </a>
+  <body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+    <Navbar />
 
-        <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                'relative text-sm font-medium transition-colors hover:text-accent-blue',
-                currentPath === link.href || (link.href !== '/' && link.href !== '/#contact' && currentPath.startsWith(link.href))
-                  ? 'text-accent-blue'
-                  : 'text-gray-400',
-              ]}
-            >
-              {link.label}
-              {(currentPath === link.href || (link.href !== '/' && link.href !== '/#contact' && currentPath.startsWith(link.href))) && (
-                <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full" />
-              )}
-            </a>
-          ))}
-        </div>
+    <div class="pt-14 lg:grid lg:grid-cols-[280px_1fr] min-h-screen">
+      <Sidebar currentPath={currentPath} transition:persist transition:name="sidebar" />
 
-        <!-- Mobile hamburger -->
-        <button
-          id="mobile-menu-btn"
-          class="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
-          aria-label="Toggle menu"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+      <!-- Mobile backdrop -->
+      <div
+        id="sidebar-backdrop"
+        class="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm hidden lg:hidden"
+      />
 
-      <!-- Mobile menu -->
-      <div id="mobile-menu" class="hidden md:hidden border-t border-slate-700/50 bg-slate-900/95 backdrop-blur-md">
-        <div class="px-4 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <a
-              href={link.href}
-              class:list={[
-                'text-sm font-medium transition-colors hover:text-accent-blue',
-                currentPath === link.href || (link.href !== '/' && link.href !== '/#contact' && currentPath.startsWith(link.href))
-                  ? 'text-accent-blue'
-                  : 'text-gray-400',
-              ]}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main content -->
-    <main class="flex-1">
-      <slot />
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-700/50 py-8">
-      <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Ben Laufer</p>
-        <div class="flex items-center gap-6">
-          <a href="https://github.com/bennlaufer" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors">GitHub</a>
-          <a href="https://linkedin.com/in/benlaufer1" target="_blank" rel="noopener noreferrer" class="hover:text-gray-300 transition-colors">LinkedIn</a>
-        </div>
-      </div>
-    </footer>
+      <main class="min-h-screen p-6 lg:p-10">
+        <slot />
+      </main>
+    </div>
 
     <script>
-      document.addEventListener('astro:page-load', () => {
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        btn?.addEventListener('click', () => {
-          menu?.classList.toggle('hidden');
+      function initSidebar() {
+        const toggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+
+        function openSidebar() {
+          sidebar?.classList.remove('-translate-x-full');
+          backdrop?.classList.remove('hidden');
+        }
+
+        function closeSidebar() {
+          sidebar?.classList.add('-translate-x-full');
+          backdrop?.classList.add('hidden');
+        }
+
+        toggle?.addEventListener('click', () => {
+          const isOpen = !sidebar?.classList.contains('-translate-x-full');
+          if (isOpen) {
+            closeSidebar();
+          } else {
+            openSidebar();
+          }
         });
+
+        backdrop?.addEventListener('click', closeSidebar);
+      }
+
+      document.addEventListener('astro:page-load', initSidebar);
+
+      // Close mobile sidebar before page transition
+      document.addEventListener('astro:before-preparation', () => {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        sidebar?.classList.add('-translate-x-full');
+        backdrop?.classList.add('hidden');
       });
     </script>
   </body>

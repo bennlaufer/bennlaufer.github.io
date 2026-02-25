@@ -35,7 +35,8 @@ You have access to Playwright MCP tools for visual feedback while building. Use 
 ```
 src/
 ├── components/
-│   ├── Hero.astro              # Hero section — gradient title, bio, social links
+│   ├── Navbar.astro            # Top navigation bar — site title + social/contact icon links
+│   ├── Sidebar.astro           # Left sidebar — category navigation links
 │   ├── ProjectCard.astro       # Glassmorphism card — title, desc, tags, GitHub stats
 │   └── CategorySection.astro   # Category heading + responsive grid of ProjectCards
 ├── content/
@@ -43,12 +44,13 @@ src/
 ├── data/
 │   └── projects.json           # 8 projects — source of truth for project metadata
 ├── layouts/
-│   └── BaseLayout.astro        # Shared layout — nav, footer, View Transitions, SEO meta
+│   └── BaseLayout.astro        # Shared layout — Navbar + Sidebar + main slot, View Transitions, SEO meta
 ├── pages/
-│   ├── index.astro             # Home — Hero + 3 featured projects + contact section
+│   ├── index.astro             # About — bio, education, skills & interests
 │   ├── resume.astro            # Resume — PDF iframe (desktop) / download (mobile)
 │   └── projects/
-│       └── index.astro         # All 8 projects grouped into 3 categories
+│       ├── index.astro         # Projects index (redirects or lists all)
+│       └── [category].astro    # Dynamic route — projects filtered by category
 ├── content.config.ts           # Two collections: githubRepos (API) + projects (JSON)
 └── env.d.ts                    # Astro client types
 ```
@@ -66,7 +68,7 @@ GitHub API ──→ githubRepos collection ──┘
 ## Design System
 
 - **Theme**: Dark only — `slate-900`/`950` backgrounds, white/gray text
-- **Accent**: Blue `#3b82f6` → Purple `#8b5cf6` gradient (used in hero title, hover borders, CTAs)
+- **Accent**: Blue `#3b82f6` → Purple `#8b5cf6` gradient (used in hover borders, active sidebar links, CTAs)
 - **Cards**: Glassmorphism (`bg-white/5 backdrop-blur-sm`) with hover scale + glow
 - **Animations**: `fade-in`, `fade-in-up`, `slide-in` with staggered delays (defined in tailwind.config.mjs)
 - **Responsive**: Mobile-first. 1 col → 2 cols (md) → 3 cols (lg) grid
@@ -74,7 +76,8 @@ GitHub API ──→ githubRepos collection ──┘
 ## Key Conventions
 
 - Tailwind `darkMode: 'class'` — `<html>` always has `class="dark"`
-- Mobile hamburger menu uses vanilla JS, re-initialized on `astro:page-load` for View Transitions
+- Sidebar layout: fixed left sidebar (desktop) / slide-out drawer (mobile) with category navigation
+- Mobile sidebar toggle uses vanilla JS, re-initialized on `astro:page-load` for View Transitions
 - No client-side framework (React, Vue, etc.) — all components are Astro (server-rendered)
 - SEO meta (canonical, OG, Twitter) set in BaseLayout via `Astro.url`
 - All pages use `<BaseLayout title="...">` wrapper
