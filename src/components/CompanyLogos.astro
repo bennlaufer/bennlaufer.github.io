@@ -1,0 +1,20 @@
+---
+const companies = [
+  { name: "Claritas", logo: "/images/logos/claritas.png" },
+  { name: "F5", logo: "/images/logos/f5.png" },
+  { name: "Postal.io", logo: "/images/logos/postal.png" },
+  { name: "Cal Poly", logo: "/images/logos/cal-poly.png" },
+];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+  {companies.map((company) => (
+    <div class="flex items-center justify-center">
+      <img
+        src={company.logo}
+        alt={company.name}
+        class="h-20 sm:h-24 w-auto object-contain"
+      />
+    </div>
+  ))}
+</div>

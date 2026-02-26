@@ -40,7 +40,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-950 text-white">
     <Navbar currentPath={currentPath} />
-    <main class="pt-20 max-w-5xl mx-auto px-6 lg:px-10 min-h-screen">
+    <slot name="hero" />
+    <main class:list={["max-w-5xl mx-auto px-6 lg:px-10", Astro.slots.has('hero') ? '' : 'pt-20 min-h-screen']}>
       <slot />
     </main>
     <Footer />
