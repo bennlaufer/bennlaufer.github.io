@@ -6,6 +6,7 @@ Personal portfolio site for Ben Laufer. Astro 5 + Tailwind CSS, statically gener
 
 - **Live**: https://bennlaufer.github.io
 - **Repo**: `bennlaufer/bennlaufer.github.io`
+- ALWAYS PUBLISH WITH bennlaufer@gmail.com github account
 
 ## Quick Start
 
