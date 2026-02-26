@@ -2,64 +2,39 @@
 const experiences = [
   {
     company: "Claritas",
-    initial: "C",
     role: "AI Agent Developer",
     dates: "Feb 2025 – Present",
-    description:
-      "Architected backend infrastructure for OKRA, an AI-driven performance management platform. Built AI coaching agents and recommendation systems.",
-    color: "bg-accent-blue",
+    impact:
+      "Built AI coaching agents and backend infrastructure for an AI-driven performance management platform.",
   },
   {
     company: "Postal.io",
-    initial: "P",
     role: "Data Scientist Intern",
     dates: "Dec 2023 – Jul 2024",
-    description:
-      "Built predictive LTV models and automated data pipelines. Used clustering on millions of engagement records to identify high-retention segments.",
-    color: "bg-emerald-500",
+    impact:
+      "Built predictive LTV models and used clustering on millions of records to identify high-retention segments.",
   },
   {
     company: "Cal Poly",
-    initial: "CP",
     role: "Research Analyst",
     dates: "Nov 2023 – Jun 2024",
-    description:
-      "Co-developed an R-based interactive textbook with automated feedback. Modeled 1,000+ student surveys and presented findings at eCOTS.",
-    color: "bg-amber-500",
+    impact:
+      "Co-developed an interactive statistics textbook with automated feedback. Presented findings at eCOTS.",
   },
 ];
 ---
 
-<div class="-my-6">
+<div class="space-y-8">
   {experiences.map((exp, i) => (
-    <div class="relative pl-8 sm:pl-32 py-6 group">
-      {/* Vertical line */}
-      <div
-        class:list={[
-          "absolute left-2 sm:left-0 top-0 h-full w-px sm:ml-[6.5rem]",
-          i === experiences.length - 1 ? "bg-transparent" : "bg-slate-700",
-        ]}
-      />
-      {/* Dot */}
-      <div class="absolute left-2 sm:left-0 top-[1.85rem] w-2 h-2 bg-accent-blue border-4 border-slate-900 box-content rounded-full sm:ml-[6.5rem] -translate-x-1/2" />
-
-      {/* Date badge */}
-      <time class="sm:absolute left-0 sm:translate-y-0.5 inline-flex items-center justify-center text-xs font-semibold uppercase tracking-wide w-20 h-6 mb-3 sm:mb-0 text-accent-blue bg-accent-blue/10 rounded-full">
-        {exp.dates.split("–")[0].trim()}
-      </time>
-
-      {/* Content */}
-      <div class="flex flex-col sm:flex-row sm:items-start gap-3">
-        {/* Company initial circle */}
-        <div class={`flex-shrink-0 w-10 h-10 rounded-full ${exp.color} flex items-center justify-center text-xs font-bold text-white shadow-lg`}>
-          {exp.initial}
-        </div>
-        <div>
-          <div class="text-xl font-bold text-white">{exp.company}</div>
-          <div class="text-sm text-gray-400 mb-1">{exp.role} &middot; {exp.dates}</div>
-          <p class="text-gray-400 leading-relaxed">{exp.description}</p>
-        </div>
-      </div>
+    <div class="group border-l-2 border-slate-700/50 pl-6 hover:border-accent-blue/50 transition-colors duration-300">
+      <span class="text-xs uppercase tracking-widest text-gray-500 font-medium">{exp.dates}</span>
+      <h3 class="mt-1 text-3xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
+        {exp.role}
+      </h3>
+      <span class="text-sm text-accent-blue font-medium">{exp.company}</span>
+      <p class="mt-2 text-gray-400 leading-relaxed max-w-2xl">
+        {exp.impact}
+      </p>
     </div>
   ))}
 </div>
