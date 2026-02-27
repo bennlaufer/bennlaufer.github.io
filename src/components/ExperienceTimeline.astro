@@ -6,6 +6,7 @@ const experiences = [
     dates: "Feb 2025 – Present",
     impact:
       "Built AI coaching agents and backend infrastructure for an AI-driven performance management platform.",
+    showReadMore: true,
   },
   {
     company: "F5",
@@ -13,6 +14,7 @@ const experiences = [
     dates: "Dec 2024 – Mar 2025",
     impact:
       "Engineered features from millions of behavioral events and designed a churn risk index using time series forecasts, improving targeting by 35%.",
+    showReadMore: true,
   },
   {
     company: "Postal.io",
@@ -20,6 +22,7 @@ const experiences = [
     dates: "Dec 2023 – Jul 2024",
     impact:
       "Built predictive LTV models and used clustering on millions of records to identify high-retention segments.",
+    showReadMore: true,
   },
   {
     company: "Cal Poly",
@@ -27,6 +30,15 @@ const experiences = [
     dates: "Nov 2023 – Jun 2024",
     impact:
       "Co-developed an interactive statistics textbook with automated feedback. Presented findings at eCOTS.",
+    showReadMore: true,
+  },
+  {
+    company: "Target",
+    role: "Retail Associate",
+    dates: "Jun 2021",
+    impact:
+      "Cross-trained in multiple departments, providing customer service and operational support across sales floor, cashiering, fulfillment, and stocking. Adapted quickly to shifting business needs and peak traffic periods.",
+    showReadMore: false,
   },
 ];
 ---
@@ -42,9 +54,11 @@ const experiences = [
       <p class="mt-2 text-gray-400 leading-relaxed max-w-2xl">
         {exp.impact}
       </p>
-      <a href="/projects" class="inline-block mt-3 text-sm text-accent-blue/70 hover:text-accent-blue transition-colors">
-        Read More <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-      </a>
+      {exp.showReadMore && (
+        <a href="/projects" class="inline-block mt-3 text-sm text-accent-blue/70 hover:text-accent-blue transition-colors">
+          Read More <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+      )}
     </div>
   ))}
 </div>
