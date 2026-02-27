@@ -5,7 +5,7 @@
     "repoName": "Text-Summarization-BART",
     "title": "Text Summarization with BART",
     "description": "Abstractive text summarization of dialogues using fine-tuned BART (140M params) with Keras 3 and KerasHub",
-    "category": "data-science-ml",
+    "category": "academia",
     "featured": true,
     "displayOrder": 1,
     "tags": ["Python", "NLP", "Deep Learning", "Keras"]
@@ -16,7 +16,7 @@
     "repoName": "NER-Transformers",
     "title": "Named Entity Recognition with Transformers",
     "description": "Custom transformer NER model from scratch — PER, ORG, LOC, MISC entity recognition on CoNLL 2003 with multi-head self-attention",
-    "category": "data-science-ml",
+    "category": "academia",
     "featured": true,
     "displayOrder": 2,
     "tags": ["Python", "NLP", "Transformers", "PyTorch"]
@@ -27,21 +27,10 @@
     "repoName": "Metric-Learning-Image-Search",
     "title": "Metric Learning Image Search",
     "description": "CNN metric learning for image similarity search using contrastive loss on CIFAR-100 with 8-dimensional normalized embeddings",
-    "category": "data-science-ml",
+    "category": "academia",
     "featured": true,
     "displayOrder": 3,
     "tags": ["Python", "Computer Vision", "Deep Learning", "PyTorch"]
-  },
-  {
-    "id": "sentiment-algorithm",
-    "slug": "sentiment-algorithm",
-    "repoName": "Sentiment-Algorithm",
-    "title": "Sentiment Analysis Algorithm",
-    "description": "Interactive R package for real-time sentiment analysis using AFINN lexicon with auto spelling correction and iterative scoring",
-    "category": "data-science-ml",
-    "featured": false,
-    "displayOrder": 4,
-    "tags": ["R", "NLP", "Package Development"]
   },
   {
     "id": "body-composition-and-anthropometric-analysis",
@@ -49,9 +38,9 @@
     "repoName": "Body-Composition-and-Anthropometric-Analysis",
     "title": "Body Composition & Anthropometric Analysis",
     "description": "Linear mixed-effects models and PCA analyzing health differences across Greek minority schools in Istanbul",
-    "category": "statistical-research",
+    "category": "academia",
     "featured": false,
-    "displayOrder": 5,
+    "displayOrder": 4,
     "tags": ["R", "Mixed-Effects Models", "PCA", "Biostatistics"]
   },
   {
@@ -60,21 +49,10 @@
     "repoName": "SARS-CoV-2-Seroprevalence-Analysis",
     "title": "SARS-CoV-2 Seroprevalence Analysis",
     "description": "CDC-affiliated logistic regression on 33K+ blood donors analyzing SARS-CoV-2 seroconversion detection behavior",
-    "category": "statistical-research",
+    "category": "academia",
     "featured": false,
-    "displayOrder": 6,
+    "displayOrder": 5,
     "tags": ["SAS", "Logistic Regression", "Epidemiology"]
-  },
-  {
-    "id": "tidyworldcupr",
-    "slug": "tidyworldcupr",
-    "repoName": "tidyWorldCupR",
-    "title": "tidyWorldCupR",
-    "description": "R package for FIFA World Cup data (1930-2014) with Leaflet maps, goal scorers, match info, and emoji flags",
-    "category": "statistical-research",
-    "featured": false,
-    "displayOrder": 7,
-    "tags": ["R", "Data Visualization", "Package Development"]
   },
   {
     "id": "claude-mcp-extension",
@@ -82,9 +60,31 @@
     "repoName": "claude-mcp-extension",
     "title": "Claude MCP Extension",
     "description": "VS Code extension for managing MCP servers in Claude Code — health checks, enable/disable, plugin discovery",
-    "category": "software-tools",
+    "category": "personal",
+    "featured": false,
+    "displayOrder": 6,
+    "tags": ["TypeScript", "VS Code", "AI Tools"]
+  },
+  {
+    "id": "tidyworldcupr",
+    "slug": "tidyworldcupr",
+    "repoName": "tidyWorldCupR",
+    "title": "tidyWorldCupR",
+    "description": "R package for FIFA World Cup data (1930-2014) with Leaflet maps, goal scorers, match info, and emoji flags",
+    "category": "personal",
+    "featured": false,
+    "displayOrder": 7,
+    "tags": ["R", "Data Visualization", "Package Development"]
+  },
+  {
+    "id": "sentiment-algorithm",
+    "slug": "sentiment-algorithm",
+    "repoName": "Sentiment-Algorithm",
+    "title": "Sentiment Analysis Algorithm",
+    "description": "Interactive R package for real-time sentiment analysis using AFINN lexicon with auto spelling correction and iterative scoring",
+    "category": "personal",
     "featured": false,
     "displayOrder": 8,
-    "tags": ["TypeScript", "VS Code", "AI Tools"]
+    "tags": ["R", "NLP", "Package Development"]
   }
 ]

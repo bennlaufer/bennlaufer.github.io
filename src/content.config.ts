@@ -17,7 +17,7 @@ const projects = defineCollection({
     repoName: z.string(),
     title: z.string(),
     description: z.string(),
-    category: z.enum(['data-science-ml', 'statistical-research', 'software-tools']),
+    category: z.enum(['professional', 'personal', 'academia']),
     featured: z.boolean(),
     displayOrder: z.number(),
     tags: z.array(z.string()),
