@@ -44,6 +44,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <main class:list={["max-w-5xl mx-auto px-6 lg:px-10", Astro.slots.has('hero') ? '' : 'pt-20 min-h-screen']}>
       <slot />
     </main>
+    <slot name="pre-footer" />
     <Footer />
   </body>
 </html>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import ProjectMarquee from '../components/ProjectMarquee.astro';
 import ExperienceTimeline from '../components/ExperienceTimeline.astro';
 import CompanyLogos from '../components/CompanyLogos.astro';
 import { getCollection } from 'astro:content';
@@ -13,23 +14,29 @@ for (const repo of githubRepos) {
   repoMap.set(repo.data.name, repo);
 }
 
+function enrichProject(project: (typeof allProjects)[number]) {
+  const gh = repoMap.get(project.data.repoName);
+  return {
+    title: project.data.title,
+    description: project.data.description,
+    category: project.data.category,
+    tags: project.data.tags,
+    repoUrl: gh?.data.url ?? `https://github.com/bennlaufer/${project.data.repoName}`,
+    stars: gh?.data.stars,
+    forks: gh?.data.raw?.forks_count,
+    language: gh?.data.raw?.language ?? undefined,
+  };
+}
+
 const featured = allProjects
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
   .slice(0, 3)
-  .map((project) => {
-    const gh = repoMap.get(project.data.repoName);
-    return {
-      title: project.data.title,
-      description: project.data.description,
-      category: project.data.category,
-      tags: project.data.tags,
-      repoUrl: gh?.data.url ?? `https://github.com/bennlaufer/${project.data.repoName}`,
-      stars: gh?.data.stars,
-      forks: gh?.data.raw?.forks_count,
-      language: gh?.data.raw?.language ?? undefined,
-    };
-  });
+  .map(enrichProject);
+
+const allProjectsEnriched = allProjects
+  .sort((a, b) => a.data.displayOrder - b.data.displayOrder)
+  .map(enrichProject);
 ---
 
 <BaseLayout title="Ben Laufer — Data Science & AI Agent Development">
@@ -76,19 +83,5 @@ const featured = allProjects
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="pb-16 animate-fade-in-up" style="animation-delay: 0.4s">
-    <h2 class="text-2xl font-bold text-white mb-6">Skills & Interests</h2>
-    <div class="flex flex-wrap gap-2">
-      {[
-        'Python', 'R', 'TypeScript', 'PyTorch', 'Keras',
-        'Machine Learning', 'NLP', 'Deep Learning', 'Statistical Modeling',
-        'Data Visualization', 'AI Agents', 'VS Code Extensions',
-      ].map((skill) => (
-        <span class="text-sm px-3 py-1.5 rounded-full bg-slate-700/50 text-gray-300">
-          {skill}
-        </span>
-      ))}
-    </div>
-  </section>
+  <ProjectMarquee slot="pre-footer" projects={allProjectsEnriched} />
 </BaseLayout>
