@@ -130,7 +130,37 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 - No analytics integration
 - GitHub stats are build-time only (not live-updated)
 
-## 8. Future Considerations
+## 8. Next Steps (Planned)
+
+### 8.1 Resume Page Cleanup
+
+- Redesign the resume page layout and styling
+- Improve the PDF viewer experience (desktop) and download flow (mobile)
+
+### 8.2 Professional Projects & Demo Pages
+
+- Add professional/work projects to the portfolio (beyond personal GitHub repos)
+- Create dedicated demo pages for select products to showcase real work interactively
+
+### 8.3 About Page Overhaul
+
+- Clean up the about section content and layout
+- Add animations or visual flair for education (e.g., school logo, campus imagery)
+
+### 8.4 Contact Page Polish
+
+- Review and clean up the text/copy on the contact page
+
+### 8.5 Logo Redesign
+
+- Redesign the site logo to use two letters (e.g., "BL") instead of the current single "B"
+
+### 8.6 Project Color Coding / Classification
+
+- Add a visual classification system for projects on the homepage marquee
+- Color-code or tag projects by category so visitors can quickly distinguish project types at a glance
+
+## 9. Future Considerations
 
 Potential enhancements (not currently scoped):
 
