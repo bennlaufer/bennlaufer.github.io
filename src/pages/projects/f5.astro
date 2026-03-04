@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const tags = ["Python", "Survival Analysis", "KNN", "DuckDB", "Pandas", "scikit-learn"];
+
+const methods = [
+  {
+    title: "Survival Analysis",
+    subtitle: "Identifying At-Risk Segments",
+    points: [
+      "Applied Kaplan-Meier survival curves and Cox Proportional Hazards models",
+      "Used customer categorical segments as covariates to profile risk levels",
+      "Identified specific segments with significantly elevated churn likelihood",
+      "Found segments with up to 65% higher hazard ratios compared to baseline groups",
+    ],
+  },
+  {
+    title: "Behavioral Early-Warning Analysis",
+    subtitle: "Detecting Disengagement Signals",
+    points: [
+      "Discovered that customers who eventually churned shortened their contract renewal periods, while retained customers maintained consistent contract lengths",
+      "Found a \u201Cproactivity gap\u201D: retained customers renewed contracts roughly twice as far in advance as those who eventually churned",
+      "Validated findings using non-parametric statistical tests with correction for multiple comparisons",
+    ],
+  },
+  {
+    title: "Predictive Modeling",
+    subtitle: "Estimating Churn Timelines",
+    points: [
+      "Built a K-Nearest Neighbors regression pipeline predicting months remaining until churn",
+      "Engineered features from engagement time series: volatility, acceleration, peak recency, distributional summaries",
+      "Designed a tenure-matched training approach to prevent survivorship bias",
+      "Created a composite risk index combining predicted timeline with customer tenure for portfolio-level prioritization",
+    ],
+  },
+];
+
+const techStack = [
+  { group: "Data Processing", tools: "Python, DuckDB (SQL-first queries on multi-million-row datasets), Pandas" },
+  { group: "Statistical Analysis", tools: "SciPy (Mann-Whitney U, Shapiro-Wilk), Lifelines (survival models)" },
+  { group: "Machine Learning", tools: "scikit-learn (KNN regression, feature engineering)" },
+  { group: "Visualization", tools: "Matplotlib, Seaborn" },
+  { group: "Collaboration", tools: "Git/GitHub, Jupyter notebooks" },
+];
+
+const results = [
+  "Identified high-risk customer segments with statistically significant churn indicators",
+  "Discovered two actionable early-warning behavioral signals (contract shortening, delayed renewals)",
+  "Built a deployable prediction pipeline that scores active customers into Low/Moderate/High risk tiers",
+  "Delivered a composite risk index enabling targeted retention interventions",
+];
+
+const leadership = [
+  "Served as team lead, managing task delegation based on individual strengths",
+  "Led as the primary developer, with focus on feature engineering and the prediction pipeline",
+  "Facilitated collaboration sessions and pair programming",
+  "Delivered presentations translating technical findings for non-technical stakeholders",
+  "Key lesson: starting with stronger cross-team collaboration from day one would have amplified efficiency",
+];
+---
+
+<BaseLayout title="Customer Churn Prediction — F5 | Ben Laufer">
+  <!-- Back link -->
+  <a href="/projects" class="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors mb-8 mt-8">
+    &larr; Back to Projects
+  </a>
+
+  <!-- Hero -->
+  <div class="mb-12 animate-fade-in-up">
+    <div class="flex items-center gap-4 mb-4">
+      <img src="/images/logos/f5.png" alt="F5" class="h-12 w-auto" />
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white">Customer Churn Prediction System</h1>
+        <p class="text-accent-blue font-medium">F5</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-400 mb-4">
+      <span>Data Scientist Project Intern & Team Lead</span>
+      <span>~8 weeks &middot; Winter 2025</span>
+      <span>4-person team</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span class="text-xs px-2 py-1 rounded-full bg-slate-700/50 text-gray-300">{tag}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.1s">
+    <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
+    <blockquote class="border-l-2 border-accent-blue/50 pl-4 text-gray-400 leading-relaxed italic">
+      Led a team of four to build a comprehensive customer churn prediction system for a major enterprise technology company. The project analyzed longitudinal customer engagement data to answer three questions: <strong class="text-white not-italic">Who</strong> is most likely to churn? <strong class="text-white not-italic">How</strong> can churn be anticipated? <strong class="text-white not-italic">When</strong> will it occur?
+    </blockquote>
+  </section>
+
+  <!-- Approach — Three Methods -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.15s">
+    <h2 class="text-2xl font-bold text-white mb-6">Approach</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {methods.map((method, i) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <div class="text-xs text-accent-blue font-medium uppercase tracking-widest mb-2">Method {i + 1}</div>
+          <h3 class="text-lg font-semibold text-white mb-1">{method.title}</h3>
+          <p class="text-sm text-gray-500 mb-4">{method.subtitle}</p>
+          <ul class="space-y-2">
+            {method.points.map((point) => (
+              <li class="text-sm text-gray-400 leading-relaxed flex gap-2">
+                <span class="text-accent-blue/60 mt-1 shrink-0">&bull;</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Technical Stack -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.2s">
+    <h2 class="text-2xl font-bold text-white mb-4">Technical Stack</h2>
+    <div class="space-y-3">
+      {techStack.map((item) => (
+        <div class="flex flex-col sm:flex-row sm:gap-4">
+          <span class="text-sm font-medium text-accent-blue shrink-0 sm:w-44">{item.group}</span>
+          <span class="text-sm text-gray-400">{item.tools}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Key Results -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.25s">
+    <h2 class="text-2xl font-bold text-white mb-4">Key Results</h2>
+    <ul class="space-y-3">
+      {results.map((result) => (
+        <li class="text-gray-400 leading-relaxed flex gap-2">
+          <span class="text-accent-blue/60 mt-1 shrink-0">&bull;</span>
+          <span>{result}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Leadership & Reflections -->
+  <section class="mb-16 max-w-3xl animate-fade-in-up" style="animation-delay: 0.3s">
+    <h2 class="text-2xl font-bold text-white mb-4">Leadership & Reflections</h2>
+    <ul class="space-y-3">
+      {leadership.map((item) => (
+        <li class="text-gray-400 leading-relaxed flex gap-2">
+          <span class="text-accent-blue/60 mt-1 shrink-0">&bull;</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

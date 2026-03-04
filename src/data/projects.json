@@ -1,5 +1,17 @@
 [
   {
+    "id": "f5-churn-prediction",
+    "slug": "f5-churn-prediction",
+    "repoName": "",
+    "title": "Customer Churn Prediction — F5",
+    "description": "Multi-method churn prediction system combining survival analysis, behavioral indicators, and KNN regression to identify at-risk customers and estimate churn timelines.",
+    "category": "professional",
+    "featured": true,
+    "displayOrder": 0,
+    "tags": ["Python", "Survival Analysis", "KNN", "DuckDB", "Pandas", "scikit-learn"],
+    "internalUrl": "/projects/f5"
+  },
+  {
     "id": "text-summarization-bart",
     "slug": "text-summarization-bart",
     "repoName": "Text-Summarization-BART",

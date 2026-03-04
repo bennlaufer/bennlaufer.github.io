@@ -33,6 +33,7 @@ function enrichProject(project: (typeof allProjects)[number]) {
     stars: gh?.data.stars,
     forks: gh?.data.raw?.forks_count,
     language: gh?.data.raw?.language ?? undefined,
+    internalUrl: project.data.internalUrl,
   };
 }
 
