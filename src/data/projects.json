@@ -1,5 +1,29 @@
 [
   {
+    "id": "stat301-interactive-textbook",
+    "slug": "stat301-interactive-textbook",
+    "repoName": "",
+    "title": "Interactive Textbook Research — Cal Poly",
+    "description": "Multi-quarter research converting a statistics textbook into an interactive online platform using CourseKata, with mixed-methods evaluation including surveys, classroom observations, and statistical modeling.",
+    "category": "professional",
+    "featured": true,
+    "displayOrder": 0,
+    "tags": ["R", "Mixed-Effects Models", "CourseKata", "Research", "ggplot2"],
+    "internalUrl": "/projects/research-textbook"
+  },
+  {
+    "id": "postal-internship",
+    "slug": "postal-internship",
+    "repoName": "",
+    "title": "Firmographic Data Analysis — Postal.io",
+    "description": "Collected and analyzed firmographic data on 365+ customers to identify high-spending segments, built a lead scoring framework, and presented growth insights to executive leadership.",
+    "category": "professional",
+    "featured": true,
+    "displayOrder": 1,
+    "tags": ["Data Analysis", "Web Scraping", "Lead Scoring", "Amplitude", "NetSuite"],
+    "internalUrl": "/projects/postal"
+  },
+  {
     "id": "f5-churn-prediction",
     "slug": "f5-churn-prediction",
     "repoName": "",
@@ -7,7 +31,7 @@
     "description": "Multi-method churn prediction system combining survival analysis, behavioral indicators, and KNN regression to identify at-risk customers and estimate churn timelines.",
     "category": "professional",
     "featured": true,
-    "displayOrder": 0,
+    "displayOrder": 2,
     "tags": ["Python", "Survival Analysis", "KNN", "DuckDB", "Pandas", "scikit-learn"],
     "internalUrl": "/projects/f5"
   },
@@ -19,21 +43,10 @@
     "description": "Abstractive text summarization of dialogues using fine-tuned BART (140M params) with Keras 3 and KerasHub",
     "category": "academia",
     "featured": true,
-    "displayOrder": 1,
+    "displayOrder": 3,
     "tags": ["Python", "NLP", "Deep Learning", "Keras"]
   },
-  {
-    "id": "ner-transformers",
-    "slug": "ner-transformers",
-    "repoName": "NER-Transformers",
-    "title": "Named Entity Recognition with Transformers",
-    "description": "Custom transformer NER model from scratch — PER, ORG, LOC, MISC entity recognition on CoNLL 2003 with multi-head self-attention",
-    "category": "academia",
-    "featured": true,
-    "displayOrder": 2,
-    "tags": ["Python", "NLP", "Transformers", "PyTorch"]
-  },
-  {
+{
     "id": "metric-learning-image-search",
     "slug": "metric-learning-image-search",
     "repoName": "Metric-Learning-Image-Search",
@@ -41,7 +54,7 @@
     "description": "CNN metric learning for image similarity search using contrastive loss on CIFAR-100 with 8-dimensional normalized embeddings",
     "category": "academia",
     "featured": true,
-    "displayOrder": 3,
+    "displayOrder": 5,
     "tags": ["Python", "Computer Vision", "Deep Learning", "PyTorch"]
   },
   {
@@ -52,7 +65,7 @@
     "description": "Linear mixed-effects models and PCA analyzing health differences across Greek minority schools in Istanbul",
     "category": "academia",
     "featured": false,
-    "displayOrder": 4,
+    "displayOrder": 6,
     "tags": ["R", "Mixed-Effects Models", "PCA", "Biostatistics"]
   },
   {
@@ -63,7 +76,7 @@
     "description": "CDC-affiliated logistic regression on 33K+ blood donors analyzing SARS-CoV-2 seroconversion detection behavior",
     "category": "academia",
     "featured": false,
-    "displayOrder": 5,
+    "displayOrder": 7,
     "tags": ["SAS", "Logistic Regression", "Epidemiology"]
   },
   {
@@ -74,7 +87,7 @@
     "description": "VS Code extension for managing MCP servers in Claude Code — health checks, enable/disable, plugin discovery",
     "category": "personal",
     "featured": false,
-    "displayOrder": 6,
+    "displayOrder": 8,
     "tags": ["TypeScript", "VS Code", "AI Tools"]
   },
   {
@@ -85,7 +98,7 @@
     "description": "R package for FIFA World Cup data (1930-2014) with Leaflet maps, goal scorers, match info, and emoji flags",
     "category": "personal",
     "featured": false,
-    "displayOrder": 7,
+    "displayOrder": 9,
     "tags": ["R", "Data Visualization", "Package Development"]
   },
   {
@@ -96,7 +109,7 @@
     "description": "Interactive R package for real-time sentiment analysis using AFINN lexicon with auto spelling correction and iterative scoring",
     "category": "personal",
     "featured": false,
-    "displayOrder": 8,
+    "displayOrder": 10,
     "tags": ["R", "NLP", "Package Development"]
   }
 ]
