@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const tags = ["Data Analysis", "Web Scraping", "Lead Scoring", "Amplitude", "NetSuite"];
+
+const scopeOfWork = [
+  {
+    title: "Firmographic Data Collection",
+    subtitle: "Building the Customer Dataset",
+    points: [
+      "Web-scraped firmographic profiles for 365+ customers from Crunchbase and publicly available databases",
+      "Compiled data covering industry, company size, founding year, financing round history, total funding, IPO status, acquisition count, and geographic location",
+      "Organized data into Google Sheets for collaborative analysis with the data science team",
+    ],
+  },
+  {
+    title: "Exploratory & Statistical Analysis",
+    subtitle: "Identifying High-Value Segments",
+    points: [
+      "Analyzed 365 customer observations using MRR + average monthly GMV (rolling 12 months) as the response variable",
+      "Investigated which firmographic attributes differentiate high-spending customers, controlling for company size",
+      "Excluded total funding from analysis due to excessive missing values",
+    ],
+  },
+  {
+    title: "Integrative Analysis",
+    subtitle: "Capstone with Product Usage Data",
+    points: [
+      "Augmented firmographic analysis with millions of product engagement data points from Amplitude and NetSuite",
+      "Identified behavioral patterns distinguishing high- vs. low-GMV customers and documented key use cases",
+      "Delivered final presentation with findings and visualizations to the Executive Leadership Team (ELT)",
+    ],
+  },
+];
+
+const findings = [
+  {
+    factor: "Industry",
+    detail: "Non-tech companies spend significantly more per month on average than tech companies. 4 of the top 5 customers by spending were non-tech (Nielsen, FanDuel, U.S. Legal Support, Cisco Meraki).",
+  },
+  {
+    factor: "Financing Round",
+    detail: "Relatively low spend for Series A\u2013C companies, with a significant spike in spend after Series C.",
+  },
+  {
+    factor: "Acquisitions",
+    detail: "Each additional acquisition correlated with meaningfully higher monthly spending.",
+  },
+];
+
+const deliverables = [
+  {
+    title: "Lead Scoring Framework",
+    detail: "Designed a scoring model using industry type, financing round, and acquisition count to categorize prospective leads as Red (low), Yellow (medium), or Green (high priority).",
+  },
+  {
+    title: "Ideal Customer Profile",
+    detail: "Identified the \u201CDNA\u201D of top-spending customers: companies with high-ticket clientele (e.g., FanDuel), high-volume clientele (e.g., Nielsen), or a combination of both.",
+  },
+  {
+    title: "Final ELT Presentation",
+    detail: "Summarized all findings with supporting visualizations for the Executive Leadership Team.",
+  },
+];
+
+const techStack = [
+  { group: "Data Collection", tools: "Web scraping, Crunchbase, Google Sheets" },
+  { group: "Data Sources", tools: "Amplitude (product analytics), NetSuite (financial/ERP)" },
+  { group: "Analysis", tools: "Exploratory data analysis, firmographic segmentation, lead scoring" },
+  { group: "Presentation", tools: "Data storytelling, visualization, executive-level reporting" },
+];
+---
+
+<BaseLayout title="Firmographic Data Analysis — Postal.io | Ben Laufer">
+  <!-- Back link -->
+  <a href="/projects" class="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors mb-8 mt-8">
+    &larr; Back to Projects
+  </a>
+
+  <!-- Hero -->
+  <div class="mb-12 animate-fade-in-up">
+    <div class="flex items-center gap-4 mb-4">
+      <img src="/images/logos/postal.png" alt="Postal.io" class="h-12 w-auto" />
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold text-white">Firmographic Data Analysis</h1>
+        <p class="text-accent-blue font-medium">Postal.io</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-400 mb-4">
+      <span>Data Analyst Intern &middot; Data Science Department</span>
+      <span>2023 – 2024</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <span class="text-xs px-2 py-1 rounded-full bg-slate-700/50 text-gray-300">{tag}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.1s">
+    <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
+    <blockquote class="border-l-2 border-accent-blue/50 pl-4 text-gray-400 leading-relaxed italic">
+      Postal.io is a marketplace platform for corporate gifting and direct mail. As a Data Analyst Intern on the Data Science team, I collected and analyzed firmographic data on 365+ customers to understand <strong class="text-white not-italic">who</strong> spends the most, <strong class="text-white not-italic">why</strong> certain segments outperform others, and <strong class="text-white not-italic">how</strong> to identify high-value prospects before they convert.
+    </blockquote>
+  </section>
+
+  <!-- Scope of Work -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.15s">
+    <h2 class="text-2xl font-bold text-white mb-6">Scope of Work</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {scopeOfWork.map((phase, i) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <div class="text-xs text-accent-blue font-medium uppercase tracking-widest mb-2">Phase {i + 1}</div>
+          <h3 class="text-lg font-semibold text-white mb-1">{phase.title}</h3>
+          <p class="text-sm text-gray-500 mb-4">{phase.subtitle}</p>
+          <ul class="space-y-2">
+            {phase.points.map((point) => (
+              <li class="text-sm text-gray-400 leading-relaxed flex gap-2">
+                <span class="text-accent-blue/60 mt-1 shrink-0">&bull;</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.2s">
+    <h2 class="text-2xl font-bold text-white mb-6">Key Findings</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {findings.map((finding) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <h3 class="text-lg font-semibold text-white mb-2">{finding.factor}</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">{finding.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Deliverables -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.25s">
+    <h2 class="text-2xl font-bold text-white mb-4">Deliverables</h2>
+    <ul class="space-y-4">
+      {deliverables.map((item) => (
+        <li class="border-l-2 border-accent-blue/50 pl-4">
+          <h3 class="text-white font-medium">{item.title}</h3>
+          <p class="text-sm text-gray-400 leading-relaxed mt-1">{item.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Technical Stack -->
+  <section class="mb-16 max-w-3xl animate-fade-in-up" style="animation-delay: 0.3s">
+    <h2 class="text-2xl font-bold text-white mb-4">Technical Stack</h2>
+    <div class="space-y-3">
+      {techStack.map((item) => (
+        <div class="flex flex-col sm:flex-row sm:gap-4">
+          <span class="text-sm font-medium text-accent-blue shrink-0 sm:w-44">{item.group}</span>
+          <span class="text-sm text-gray-400">{item.tools}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

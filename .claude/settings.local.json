@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(sleep 3 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
+      "Bash(sleep 5 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_resize",
+      "Bash(pkill -f \"astro\" 2>/dev/null; sleep 1 && npm run build 2>&1)",
+      "mcp__playwright__browser_click",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(lsof -ti:4321 2>/dev/null | head -1)"
+    ]
+  }
+}
