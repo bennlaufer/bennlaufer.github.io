@@ -40,9 +40,8 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ### 3.5 Resume (`/resume`)
 
-- Embedded PDF viewer (iframe) on desktop/tablet
-- Fallback message + download button on mobile
-- Always-visible download button
+- Structured, readable in-page resume presentation across desktop, tablet, and mobile
+- Always-visible `Download PDF` button linking directly to `/resume.pdf`
 
 ## 4. Project Data
 
@@ -62,15 +61,16 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 ### 4.2 Data Sources
 
 - **Static metadata**: `src/data/projects.json` — title, description, category, tags, featured flag, display order
+- **Resume content**: `src/data/resume.ts` - structured content rendered by the `/resume` page
 - **Live GitHub stats**: Fetched at build time via `github-repos-astro-loader` — stars, forks, primary language
 
 ## 5. Design Requirements
 
 ### 5.1 Visual Identity
 
-- **Dark theme only** — slate-900/950 background, no light mode
+- **Dark site theme** - slate-900/950 background with no light-mode toggle; the resume uses an intentional light document sheet
 - **Accent gradient**: Blue (`#3b82f6`) to Purple (`#8b5cf6`)
-- **Typography**: System font stack, white primary text, gray secondary
+- **Typography**: System font stack for site chrome; the resume sheet uses a print-oriented serif typeface for readable document content
 - **Cards**: Glassmorphism effect (semi-transparent white background + backdrop blur)
 
 ### 5.2 Layout
@@ -88,9 +88,9 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ### 5.4 Responsive Breakpoints
 
-- **Mobile** (<640px): Single column, hamburger nav, no PDF iframe, timeline stacked vertically
+- **Mobile** (<640px): Single column, hamburger nav, timeline stacked vertically
 - **Tablet** (640px–1023px): Two-column grids, inline nav links
-- **Desktop** (1024px+): Three-column project grids, PDF iframe on resume page
+- **Desktop** (1024px+): Three-column project grids
 
 ## 6. Technical Requirements
 
@@ -132,30 +132,25 @@ A personal portfolio website for Ben Laufer that showcases data science, machine
 
 ## 8. Next Steps (Planned)
 
-### 8.1 Resume Page Cleanup
-
-- Redesign the resume page layout and styling
-- Improve the PDF viewer experience (desktop) and download flow (mobile)
-
-### 8.2 Professional Projects & Demo Pages
+### 8.1 Professional Projects & Demo Pages
 
 - Add professional/work projects to the portfolio (beyond personal GitHub repos)
 - Create dedicated demo pages for select products to showcase real work interactively
 
-### 8.3 About Page Overhaul
+### 8.2 About Page Overhaul
 
 - Clean up the about section content and layout
 - Add animations or visual flair for education (e.g., school logo, campus imagery)
 
-### 8.4 Contact Page Polish
+### 8.3 Contact Page Polish
 
 - Review and clean up the text/copy on the contact page
 
-### 8.5 Logo Redesign
+### 8.4 Logo Redesign
 
 - Redesign the site logo to use two letters (e.g., "BL") instead of the current single "B"
 
-### 8.6 Project Color Coding / Classification
+### 8.5 Project Color Coding / Classification
 
 - Add a visual classification system for projects on the homepage marquee
 - Color-code or tag projects by category so visitors can quickly distinguish project types at a glance

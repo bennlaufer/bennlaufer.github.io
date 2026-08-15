@@ -1,23 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { resumeData } from '../data/resume';
 ---
 
 <BaseLayout title="Resume — Ben Laufer">
   <section class="max-w-4xl py-8">
-    <!-- Header row: title + download button -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
+    <div class="mb-10 flex flex-col items-center justify-between gap-6 sm:flex-row sm:items-end">
       <h1 class="text-4xl font-bold text-white">Resume</h1>
       <a
         href="/resume.pdf"
         download
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent-blue hover:bg-accent-blue/80 text-white font-semibold transition-colors shadow-lg shadow-accent-blue/20"
+        class="inline-flex items-center gap-2 rounded-lg bg-accent-blue px-6 py-3 font-semibold text-white shadow-lg shadow-accent-blue/20 transition-colors hover:bg-accent-blue/80"
       >
         <svg
-          class="w-5 h-5"
+          class="h-5 w-5"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <path
             stroke-linecap="round"
@@ -29,32 +30,260 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
     </div>
 
-    <!-- Mobile fallback: visible below sm breakpoint -->
-    <div class="block sm:hidden mb-8 rounded-lg border border-slate-700/50 bg-slate-800/50 p-6 text-center">
-      <p class="text-gray-400 mb-4">
-        For the best viewing experience, download the PDF using the button above or view on a larger screen.
-      </p>
-    </div>
+    <article class="resume-sheet" aria-labelledby="resume-document-title">
+      <header class="resume-header">
+        <h2 id="resume-document-title">{resumeData.name}</h2>
+        <div class="resume-contact-row">
+          {resumeData.contact.slice(0, 2).map((contact) => (
+            <a href={contact.href} target="_blank" rel="noreferrer">{contact.label}</a>
+          ))}
+        </div>
+        <div class="resume-contact-row">
+          <a href={resumeData.contact[2].href}>{resumeData.contact[2].label}</a>
+          <span>{resumeData.contact[3].label}</span>
+        </div>
+      </header>
 
-    <!-- Embedded PDF: hidden on very small screens, visible from sm up -->
-    <div class="hidden sm:block">
-      <iframe
-        src="/resume.pdf#toolbar=0&navpanes=0&view=FitH"
-        title="Ben Laufer's Resume"
-        class="w-full rounded-lg border border-slate-700/50"
-        style="height: 80vh;"
-      >
-        <p class="text-gray-400">
-          Your browser does not support embedded PDFs.
-          <a
-            href="/resume.pdf"
-            download
-            class="text-accent-blue hover:underline"
-          >
-            Download the resume instead.
-          </a>
-        </p>
-      </iframe>
-    </div>
+      <section class="resume-section" aria-labelledby="experience-heading">
+        <h2 id="experience-heading" class="resume-section-heading">Relevant Experience</h2>
+        <div class="resume-entries">
+          {resumeData.experience.map((entry) => (
+            <article class="resume-entry">
+              <div class="resume-entry-heading">
+                <h3>{entry.company}</h3>
+                <time>{entry.dates}</time>
+              </div>
+              <p class="resume-role">{entry.role}</p>
+              <ul class="resume-bullets">
+                {entry.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="resume-section" aria-labelledby="projects-heading">
+        <h2 id="projects-heading" class="resume-section-heading">Projects, Research &amp; Tools</h2>
+        <div class="resume-entries">
+          {resumeData.projects.map((project) => (
+            <article class="resume-project">
+              <h3>
+                {project.title}
+                <span class="resume-project-link">
+                  (
+                  {project.href ? (
+                    <a href={project.href} target="_blank" rel="noreferrer">{project.linkLabel}</a>
+                  ) : (
+                    project.linkLabel
+                  )}
+                  )
+                </span>
+              </h3>
+              <p>{project.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="resume-section" aria-labelledby="education-heading">
+        <h2 id="education-heading" class="resume-section-heading">Education</h2>
+        <div class="resume-entries">
+          {resumeData.education.map((entry) => (
+            <article class="resume-entry">
+              <div class="resume-entry-heading">
+                <h3>{entry.school}</h3>
+                <time>{entry.dates}</time>
+              </div>
+              <p class="resume-role">{entry.degree}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="resume-section" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" class="resume-section-heading">Skills</h2>
+        <dl class="resume-skills">
+          {resumeData.skills.map((skill) => (
+            <div>
+              <dt>{skill.label}:</dt>
+              <dd>{skill.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    </article>
   </section>
 </BaseLayout>
+
+<style>
+  .resume-sheet {
+    overflow-wrap: anywhere;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 0.5rem;
+    background: white;
+    color: rgb(15 23 42);
+    box-shadow: 0 18px 45px rgb(0 0 0 / 0.2);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .resume-header {
+    text-align: center;
+  }
+
+  .resume-header h2 {
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .resume-contact-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.9rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .resume-contact-row a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resume-contact-row a:hover,
+  .resume-contact-row a:focus-visible,
+  .resume-project a:hover,
+  .resume-project a:focus-visible {
+    color: rgb(29 78 216);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  .resume-section {
+    margin-top: 1.8rem;
+  }
+
+  .resume-section-heading {
+    border-bottom: 1px solid rgb(71 85 105);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 0.65rem;
+    padding-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .resume-entries {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .resume-entry-heading {
+    align-items: baseline;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .resume-entry-heading h3,
+  .resume-project h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .resume-entry-heading time {
+    flex: 0 0 auto;
+    font-style: italic;
+    text-align: right;
+  }
+
+  .resume-role {
+    font-style: italic;
+    margin: 0.1rem 0 0;
+  }
+
+  .resume-bullets {
+    list-style: none;
+    margin: 0.1rem 0 0;
+    padding: 0;
+  }
+
+  .resume-bullets li {
+    padding-left: 0.8rem;
+    position: relative;
+  }
+
+  .resume-bullets li::before {
+    content: '-';
+    left: 0;
+    position: absolute;
+  }
+
+  .resume-project p {
+    margin: 0.1rem 0 0;
+    padding-left: 0.8rem;
+    position: relative;
+  }
+
+  .resume-project p::before {
+    content: '-';
+    left: 0;
+    position: absolute;
+  }
+
+  .resume-project-link {
+    font-size: 0.92em;
+    font-weight: 400;
+  }
+
+  .resume-project a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .resume-skills {
+    display: grid;
+    gap: 0.2rem;
+    margin: 0;
+  }
+
+  .resume-skills > div {
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: minmax(5.5rem, 7rem) minmax(0, 1fr);
+  }
+
+  .resume-skills dt {
+    font-weight: 700;
+  }
+
+  .resume-skills dd {
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .resume-sheet {
+      font-size: 1rem;
+      padding: 2rem 2.5rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .resume-entry-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .resume-entry-heading time {
+      text-align: left;
+    }
+  }
+</style>
