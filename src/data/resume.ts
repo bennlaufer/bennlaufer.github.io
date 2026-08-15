@@ -58,6 +58,7 @@ export const resumeData = {
     {
       title: 'SARS-CoV-2 Seroprevalence Analysis',
       linkLabel: 'View Paper',
+      href: 'https://drive.google.com/file/d/15f3TlOPStCv1up6lLdEt4wXcvjVvQnDz/view?usp=drive_link',
       description: 'Collaborated with Westat to analyze SARS-CoV-2 detection patterns in U.S. blood donors using logistic regression',
     },
     {
@@ -69,6 +70,7 @@ export const resumeData = {
     {
       title: 'Body Composition and Anthropometric Analysis',
       linkLabel: 'View Paper',
+      href: 'https://drive.google.com/file/d/1-_k7AXstOMoHbByDZonwIfoBQI2eE7wc/view?usp=drive_link',
       description: 'Built PCA-based model on anthropometric data across 3 schools to quantify body composition differences',
     },
   ],
