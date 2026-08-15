@@ -43,14 +43,15 @@ src/
 ├── content/
 │   └── project-overrides/      # Required empty dir for github-repos-astro-loader
 ├── data/
-│   └── projects.json           # 8 projects — source of truth for project metadata
+│   ├── projects.json           # 8 projects — source of truth for project metadata
+│   └── resume.ts               # Resume data; see PRD.md §4.2
 ├── layouts/
 │   └── BaseLayout.astro        # Shared layout — Navbar + centered main + Footer, View Transitions, SEO meta
 ├── pages/
 │   ├── index.astro             # Home — landing page with hero, experience timeline, featured projects, skills
 │   ├── about.astro             # About — bio, education, skills & interests
 │   ├── contact.astro           # Contact — email, LinkedIn, GitHub cards
-│   ├── resume.astro            # Resume — PDF iframe (desktop) / download (mobile)
+│   ├── resume.astro            # Resume page; see PRD.md §3.5 and §4.2
 │   └── projects/
 │       ├── index.astro         # Projects index — all projects grouped by category with filter links
 │       └── [category].astro    # Dynamic route — projects filtered by category with filter links
