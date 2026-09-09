@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const tags = ["SAS", "Logistic Regression", "Epidemiology", "Public Health"];
+const paperHref = "https://drive.google.com/file/d/15f3TlOPStCv1up6lLdEt4wXcvjVvQnDz/view?usp=drive_link";
+
+const studyFacts = [
+  {
+    label: "Partner",
+    value: "Westat collaboration",
+    detail: "Applied statistical research in a professional public-health setting",
+  },
+  {
+    label: "Dataset",
+    value: "33K+ U.S. blood donors",
+    detail: "A large donor dataset from a CDC-affiliated study",
+  },
+  {
+    label: "Method",
+    value: "Logistic regression",
+    detail: "Modeling SARS-CoV-2 detection patterns and seroconversion behavior",
+  },
+];
+
+const workflow = [
+  {
+    title: "Research framing",
+    subtitle: "Turning a public-health question into an analyzable outcome",
+    points: [
+      "Worked with the study context to understand how SARS-CoV-2 detection patterns were defined",
+      "Connected the analysis to the broader goal of interpreting seroconversion behavior in U.S. blood donors",
+      "Kept the portfolio narrative focused on the research contribution rather than restricted study details",
+    ],
+  },
+  {
+    title: "Statistical modeling",
+    subtitle: "Applying regression to a large observational dataset",
+    points: [
+      "Used logistic regression to analyze factors associated with SARS-CoV-2 detection",
+      "Worked with a dataset containing more than 33,000 U.S. blood donor observations",
+      "Translated model output into findings that could be understood in an epidemiological context",
+    ],
+  },
+  {
+    title: "Collaborative communication",
+    subtitle: "Contributing analysis to a professional research effort",
+    points: [
+      "Collaborated with Westat throughout the analytical process",
+      "Documented the statistical approach and interpretation for the supporting paper",
+      "Separated shareable project context from participant-level and restricted information",
+    ],
+  },
+];
+
+const professionalTakeaways = [
+  {
+    title: "Applied statistics",
+    detail: "Used logistic regression to answer a real-world epidemiological question instead of treating modeling as an isolated technical exercise.",
+  },
+  {
+    title: "Scale and rigor",
+    detail: "Worked with a 33K+ observation public-health dataset and kept the analysis grounded in the study's research context.",
+  },
+  {
+    title: "Research collaboration",
+    detail: "Contributed as a collaborator on work connected to an established professional research organization, Westat.",
+  },
+];
+
+const sharingGuardrails = [
+  "Describe the relationship as a Westat collaboration unless the exact employment or project title is confirmed separately.",
+  "Publish only findings, metrics, and visualizations that are already public or explicitly approved for portfolio use.",
+  "Do not include participant-level information, restricted variables, or unsupported claims about the study's impact.",
+  "Use the linked paper as the source for detailed findings instead of recreating sensitive or unpublished results on this page.",
+];
+---
+
+<BaseLayout
+  title="SARS-CoV-2 Seroprevalence Analysis - Westat | Ben Laufer"
+  description="A professional research collaboration with Westat analyzing SARS-CoV-2 detection patterns in U.S. blood donors using logistic regression."
+>
+  <a href="/projects" class="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors mb-8 mt-8">
+    &larr; Back to Projects
+  </a>
+
+  <!-- Hero -->
+  <header class="mb-12 animate-fade-in-up">
+    <div class="flex items-start gap-4 mb-5">
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-accent-blue/30 bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 text-xl font-extrabold text-white">
+        W
+      </div>
+      <div class="min-w-0">
+        <h1 class="text-3xl sm:text-4xl font-bold text-white">SARS-CoV-2 Seroprevalence Analysis</h1>
+        <p class="text-accent-blue font-medium">Westat collaboration</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-400 mb-4">
+      <span>Statistical Consultant</span>
+      <span>Public Health Analytics</span>
+      <span>U.S. Blood Donor Study</span>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-5">
+      {tags.map((tag) => (
+        <span class="text-xs px-2 py-1 rounded-full bg-slate-700/50 text-gray-300">{tag}</span>
+      ))}
+    </div>
+    <a
+      href={paperHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-accent-blue to-accent-purple px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent-blue/10 transition-all hover:scale-[1.02] hover:shadow-accent-blue/20"
+    >
+      View Research Paper <span aria-hidden="true">&nearr;</span>
+    </a>
+  </header>
+
+  <!-- Overview -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.1s">
+    <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
+    <blockquote class="border-l-2 border-accent-blue/50 pl-4 text-gray-400 leading-relaxed italic">
+      Collaborated with Westat on a CDC-affiliated analysis of SARS-CoV-2 detection patterns in more than 33,000 U.S. blood donors. The project used logistic regression to study seroconversion detection behavior in a large public-health dataset.
+    </blockquote>
+  </section>
+
+  <!-- Study at a glance -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.15s">
+    <h2 class="text-2xl font-bold text-white mb-6">Study at a Glance</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {studyFacts.map((fact) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <div class="text-xs text-accent-blue font-medium uppercase tracking-widest mb-2">{fact.label}</div>
+          <h3 class="text-lg font-semibold text-white mb-2">{fact.value}</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">{fact.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Analytical workflow -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.2s">
+    <h2 class="text-2xl font-bold text-white mb-6">Analytical Workflow</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {workflow.map((phase, i) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <div class="text-xs text-accent-blue font-medium uppercase tracking-widest mb-2">Phase {i + 1}</div>
+          <h3 class="text-lg font-semibold text-white mb-1">{phase.title}</h3>
+          <p class="text-sm text-gray-500 mb-4">{phase.subtitle}</p>
+          <ul class="space-y-2">
+            {phase.points.map((point) => (
+              <li class="text-sm text-gray-400 leading-relaxed flex gap-2">
+                <span class="text-accent-blue/60 mt-1 shrink-0" aria-hidden="true">&bull;</span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Professional takeaways -->
+  <section class="mb-12 animate-fade-in-up" style="animation-delay: 0.25s">
+    <h2 class="text-2xl font-bold text-white mb-6">Professional Takeaways</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {professionalTakeaways.map((takeaway) => (
+        <div class="rounded-xl border border-slate-700/50 bg-white/5 backdrop-blur-sm p-6">
+          <h3 class="text-lg font-semibold text-white mb-2">{takeaway.title}</h3>
+          <p class="text-sm text-gray-400 leading-relaxed">{takeaway.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Technical stack -->
+  <section class="mb-12 max-w-3xl animate-fade-in-up" style="animation-delay: 0.3s">
+    <h2 class="text-2xl font-bold text-white mb-4">Technical Focus</h2>
+    <div class="space-y-3">
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <span class="text-sm font-medium text-accent-blue shrink-0 sm:w-44">Modeling</span>
+        <span class="text-sm text-gray-400">Logistic regression, seroconversion detection analysis, epidemiological interpretation</span>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <span class="text-sm font-medium text-accent-blue shrink-0 sm:w-44">Data context</span>
+        <span class="text-sm text-gray-400">33K+ U.S. blood donor observations from a CDC-affiliated public-health study</span>
+      </div>
+      <div class="flex flex-col sm:flex-row sm:gap-4">
+        <span class="text-sm font-medium text-accent-blue shrink-0 sm:w-44">Collaboration</span>
+        <span class="text-sm text-gray-400">Westat research partnership, statistical documentation, paper-supported communication</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sharing guardrails -->
+  <section class="mb-16 max-w-3xl animate-fade-in-up" style="animation-delay: 0.35s">
+    <h2 class="text-2xl font-bold text-white mb-4">Sharing Boundary</h2>
+    <p class="text-gray-400 leading-relaxed mb-4">
+      This case study intentionally stays at the level of public project context and professional contribution. Detailed findings belong in the supporting paper, and any new content should be reviewed before publication.
+    </p>
+    <ul class="space-y-3">
+      {sharingGuardrails.map((guardrail) => (
+        <li class="text-gray-400 leading-relaxed flex gap-2">
+          <span class="text-accent-blue/60 mt-1 shrink-0" aria-hidden="true">&bull;</span>
+          <span>{guardrail}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

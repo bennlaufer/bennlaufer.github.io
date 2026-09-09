@@ -74,10 +74,11 @@
     "repoName": "SARS-CoV-2-Seroprevalence-Analysis",
     "title": "SARS-CoV-2 Seroprevalence Analysis",
     "description": "CDC-affiliated logistic regression on 33K+ blood donors analyzing SARS-CoV-2 seroconversion detection behavior",
-    "category": "academia",
-    "featured": false,
+    "category": "professional",
+    "featured": true,
     "displayOrder": 7,
-    "tags": ["SAS", "Logistic Regression", "Epidemiology"]
+    "tags": ["SAS", "Logistic Regression", "Epidemiology"],
+    "internalUrl": "/projects/westat"
   },
   {
     "id": "claude-mcp-extension",
